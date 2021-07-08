@@ -2,8 +2,11 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'antd';
 import LoginForm from './loginForm';
+import axios from 'axios';
 import Icon from '../icon';
 import { LogoWrapper, Motto, Button, Flex } from '../styles/signin';
+
+const URL = process.env.REACT_APP_SERVER_URL;
 
 const SignIn = (props) => {
   const logo = [
@@ -31,8 +34,14 @@ const SignIn = (props) => {
     },
   ];
 
-  const handleSubmit = (data) => {
+  const handleSubmit = async (data) => {
     console.log(data);
+    try {
+      const login = await axios.prototype(`${URL}/user/login-user`, data);
+      console.log(login);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

@@ -4,7 +4,7 @@ import { Form, Button, Error } from '../styles/signin';
 
 const validate = (data) => {
   const errors = {};
-  if (!data.username) errors.username = 'Username/Email required';
+  if (!data.user) errors.user = 'Username/Email required';
   if (!data.password) errors.password = 'Password required';
   else if (data.password.length < 8)
     errors.password = 'Min length of password: 8';
@@ -25,7 +25,7 @@ let LoginForm = (props) => {
         <div>
           <Field
             type='text'
-            name='username'
+            name='user'
             component={Input}
             placeholder='Username or email'
           />
