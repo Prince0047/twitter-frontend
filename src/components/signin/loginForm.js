@@ -19,6 +19,7 @@ const Input = ({ input, type, placeholder, meta: { touched, error } }) => (
 );
 
 let LoginForm = (props) => {
+  const { credentialError, loginDisabled } = props;
   return (
     <form onSubmit={props.handleSubmit}>
       <Form>
@@ -29,6 +30,7 @@ let LoginForm = (props) => {
             component={Input}
             placeholder='Username or email'
           />
+          {credentialError.user && <Error>{credentialError.user}</Error>}
         </div>
         <div>
           <Field
@@ -37,6 +39,9 @@ let LoginForm = (props) => {
             component={Input}
             placeholder='password'
           />
+          {credentialError.password && (
+            <Error>{credentialError.password}</Error>
+          )}
         </div>
         <span
           style={{
@@ -51,8 +56,9 @@ let LoginForm = (props) => {
             bg='rgb(255,255,255)'
             color='rgb(29, 161, 242)'
             hovbg='rgba(29,161,242,0.1)'
+            disabled={loginDisabled}
           >
-            Log in
+            {loginDisabled ? 'Logging in' : 'Log in'}
           </Button>
         </span>
       </Form>
