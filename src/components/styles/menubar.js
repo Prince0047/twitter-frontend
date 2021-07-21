@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Header = styled.header`
   padding-left: 10px;
   padding-right: 10px;
-  width: 80%;
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
   .selected {
@@ -13,16 +13,21 @@ export const Header = styled.header`
       border-radius: 50px;
     }
   }
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const MenuItem = styled.div`
   ${(props) => props.logo && { display: 'inline-block' }};
   margin-top: 10px;
   color: #000000;
+
   div {
     display: inline-block;
     padding: 10px;
   }
+
   &:hover div {
     color: rgba(29, 161, 242, 1);
     fill: rgba(29, 161, 242, 1);
