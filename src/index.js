@@ -8,7 +8,9 @@ import App from './App';
 ReactDOM.render(
   <Provider store={redux.store}>
     <PersistGate loading={null} persistor={redux.persistor}>
-      <App />
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
     </PersistGate>
   </Provider>,
   document.getElementById('root')

@@ -27,6 +27,7 @@ export const Button = styled.button`
   padding: 5px 10px;
   outline: none;
   cursor: pointer;
+
   &:hover {
     background: ${(props) => props.hovbg};
   }

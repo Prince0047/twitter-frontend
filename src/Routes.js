@@ -12,8 +12,7 @@ const Messages = React.lazy(() => import('./components/messages/index'));
 const BookMarks = React.lazy(() => import('./components/bookmarks/index'));
 const Lists = React.lazy(() => import('./components/lists/index'));
 const Profile = React.lazy(() => import('./components/profile/index'));
-const Following = React.lazy(() => import('./components/following/index'));
-const Followers = React.lazy(() => import('./components/followers/index'));
+const Follow = React.lazy(() => import('./components/follow/index'));
 
 const Routes = () => {
   const withMenuBar = (WrappedComponent) => (props) =>
@@ -47,12 +46,8 @@ const Routes = () => {
           component={withMenuBar(Profile)}
         />
         <Route
-          path='/profile/:username/following'
-          component={withMenuBar(Following)}
-        />
-        <Route
-          path='/profile/:username/followers'
-          component={withMenuBar(Followers)}
+          path='/profile/:username/:key'
+          component={withMenuBar(Profile)}
         />
       </Switch>
     </BrowserRouter>

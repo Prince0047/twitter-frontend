@@ -27,12 +27,16 @@ const Follower = (props) => {
     <FollowFlex>
       <div>
         <Link to={`${location.pathname}/following`}>
-          <span>{response.following.length}</span> <span>Following</span>
+          <p>
+            <span>{response.following.length}</span> <span>Following</span>
+          </p>
         </Link>
       </div>
       <div>
         <Link to={`${location.pathname}/followers`}>
-          <span>{response.followers.length}</span> <span>Followers</span>
+          <p>
+            <span>{response.followers.length}</span> <span>Followers</span>
+          </p>
         </Link>
       </div>
     </FollowFlex>

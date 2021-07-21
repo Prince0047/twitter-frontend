@@ -4,13 +4,24 @@ import axios from 'axios';
 import Follower from './follower';
 import Icon from '../icon';
 import ProfileHeader from '../profileHeader';
-import { ProfileCorner, Info, Dates } from '../styles/profile';
+import Tabs from '../tabs';
+import Follow from '../follow/index';
+import {
+  ProfileCorner,
+  Info,
+  Dates,
+  Cover,
+  Avatar,
+  ImgFlex,
+  Button,
+  Tab,
+} from '../styles/profile';
 
 const URL = process.env.REACT_APP_SERVER_URL;
 
 const Profile = (props) => {
   const [user, setUser] = useState(null);
-  const { username } = useParams();
+  const { username, key } = useParams();
 
   useEffect(() => {
     (async () => {
@@ -30,10 +41,38 @@ const Profile = (props) => {
   const joinPath = [
     'M19.708 2H4.292C3.028 2 2 3.028 2 4.292v15.416C2 20.972 3.028 22 4.292 22h15.416C20.972 22 22 20.972 22 19.708V4.292C22 3.028 20.972 2 19.708 2zm.792 17.708c0 .437-.355.792-.792.792H4.292c-.437 0-.792-.355-.792-.792V6.418c0-.437.354-.79.79-.792h15.42c.436 0 .79.355.79.79V19.71z',
   ];
+  const tabList = [
+    {
+      name: 'tweet',
+      title: 'Tweet',
+      path: '/tweet',
+    },
+    {
+      name: 'media',
+      title: 'Media',
+      path: '/media',
+    },
+    {
+      name: 'likes',
+      title: 'Likes',
+      path: '/likes',
+    },
+  ];
+
+  if (key === 'followers' || key === 'following') return <Follow />;
 
   return (
     <ProfileCorner>
       <ProfileHeader user={user} text='9 tweets' />
+      <div>
+        <Cover></Cover>
+        <ImgFlex>
+          <Avatar>
+            <img src={user.avatar} />
+          </Avatar>
+          <Button>Edit profile</Button>
+        </ImgFlex>
+      </div>
       <Info>
         <h2>
           {user.firstname} {user.lastname}
@@ -61,7 +100,8 @@ const Profile = (props) => {
             />
             <span>
               {' '}
-              Joined {joinedAt.toLocaleString('default', {
+              Joined{' '}
+              {joinedAt.toLocaleString('default', {
                 month: 'long',
               })}{' '}
               {joinedAt.getFullYear()}
@@ -70,6 +110,7 @@ const Profile = (props) => {
         </Dates>
         <Follower user={user} />
       </Info>
+      <Tabs tabList={tabList} />
     </ProfileCorner>
   );
 };
