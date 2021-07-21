@@ -6,6 +6,8 @@ export const Header = styled.header`
   width: 70%;
   margin-left: auto;
   margin-right: auto;
+  position: sticky;
+  top: 0;
   .selected {
     .active {
       fill: rgba(29, 161, 242, 1);
@@ -15,6 +17,9 @@ export const Header = styled.header`
   }
   @media (max-width: 768px) {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -53,10 +58,12 @@ export const Button = styled.button`
   background: rgba(29, 161, 242, 1);
   border: none;
   border-radius: 50px;
+  outline: none;
   font-size: 15px;
   font-weight: bold;
-  color: #ffffff;
+  color: rgb(255, 255, 255);
   text-align: center;
+  cursor: pointer;
   padding: ${(props) => props.padding};
   &:hover {
     background: rgb(26, 145, 218);

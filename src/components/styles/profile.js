@@ -4,6 +4,14 @@ export const ProfileCorner = styled.div`
   border-left: 1px solid lightgray;
   border-right: 1px solid lightgray;
   min-height: 100vh;
+  padding-bottom: 20%;
+`;
+
+export const HeaderWrapper = styled.div`
+  position: sticky;
+  background-color: white;
+  top: 0;
+  border-bottom: 1px solid lightgray;
 `;
 
 export const Header = styled.header`
@@ -134,6 +142,7 @@ export const Button = styled.button`
   color: rgb(29, 161, 242);
   text-align: center;
   padding: 1% 3%;
+  outline: none;
   cursor: pointer;
   &:hover {
     background: rgba(26, 145, 218, 0.1);
@@ -203,4 +212,10 @@ export const TweetDetails = styled.div`
   &:hover {
     background-color: rgb(245, 248, 250);
   }
+`;
+
+export const EmptyMsg = styled.div`
+  text-align: center;
+  color: rgb(101, 119, 134);
+  margin-top: 4px;
 `;
